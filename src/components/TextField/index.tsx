@@ -23,7 +23,7 @@ export const Input = styled.input`
 type Props = {
   label?: string;
   error?: string;
-} & InputHTMLAttributes<any>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
 const TextField = (props: Props) => {
   return (

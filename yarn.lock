@@ -1287,6 +1287,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/query-core@npm:5.59.20"
+  checksum: 10c0/c93a8d41e21db532e92c1c90916bec578729d32d1f39d655603b9e81a9d5aebc8588a4d6a75928e04d3ddc90e71a1f8dc066a61d0ba24108eaf60cc2ce024a2f
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^5.59.20":
+  version: 5.59.20
+  resolution: "@tanstack/react-query@npm:5.59.20"
+  dependencies:
+    "@tanstack/query-core": "npm:5.59.20"
+  peerDependencies:
+    react: ^18 || ^19
+  checksum: 10c0/fc3342c3a26c51c866d54082d14f86b2f644847ea8f9051000e529a012ea5437e18e35f999fcc453b2eecb0faaf29bd1aaec0956587ade63ba02262d6737800a
+  languageName: node
+  linkType: hard
+
 "@testing-library/dom@npm:^10.0.0":
   version: 10.4.0
   resolution: "@testing-library/dom@npm:10.4.0"
@@ -2487,6 +2505,7 @@ __metadata:
   resolution: "caju-front-test-1@workspace:."
   dependencies:
     "@nabla/vite-plugin-eslint": "npm:^2.0.4"
+    "@tanstack/react-query": "npm:^5.59.20"
     "@testing-library/jest-dom": "npm:^6.4.6"
     "@testing-library/react": "npm:15.0.6"
     "@types/jest": "npm:^29.5.14"

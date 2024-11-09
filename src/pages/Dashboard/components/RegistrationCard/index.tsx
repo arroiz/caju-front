@@ -1,9 +1,10 @@
 import { ButtonSmall } from '~/components/Buttons';
 import * as S from './styles';
 import { HiOutlineMail, HiOutlineUser, HiOutlineCalendar, HiOutlineTrash } from 'react-icons/hi';
+import { Registration } from '~/types/registrations';
 
 type Props = {
-  data: any;
+  data: Registration;
 };
 
 const RegistrationCard = (props: Props) => {
