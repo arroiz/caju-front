@@ -24,7 +24,7 @@ const getSizeStyles = (props: ButtonProps) => {
       background-color: #64a98c;
       color: #fff;
       font-weight: 600;
-      height: 56px;
+      height: 40px;
     `,
   };
 
@@ -32,7 +32,6 @@ const getSizeStyles = (props: ButtonProps) => {
 };
 
 export const Button = styled.button<ButtonProps>`
-  outline: none;
   display: flex;
   align-items: center;
   border: none;
@@ -40,4 +39,9 @@ export const Button = styled.button<ButtonProps>`
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   text-decoration: none;
   ${(props) => getSizeStyles(props)}
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;

@@ -8,3 +8,7 @@ export type Registration = {
   status: REGISTRATION_STATUS;
   cpf: string;
 };
+
+export type RegistrationListByStatus = {
+  [key in REGISTRATION_STATUS]: Registration[];
+};

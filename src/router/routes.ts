@@ -1,8 +1,6 @@
-const routes = {
+export const routes = {
   identify: '/identify',
   dashboard: '/dashboard',
   history: '/history',
-  newUser: '/new-user',
+  newUser: '/new-job-application',
 };
-
-export default routes;
