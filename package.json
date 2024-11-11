@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "init:db": "json-server --watch db.json",
-    "build": "tsc && vite build",
+    "build": "tsc -p tsconfig.build.json && vite build",
     "test:dev": "jest --watch --verbose --no-cache",
     "test": "jest --verbose --no-cache",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",

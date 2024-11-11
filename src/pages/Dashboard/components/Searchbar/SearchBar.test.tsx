@@ -8,7 +8,7 @@ describe('SearchBar', () => {
   it('should render SearchBar with CPF input, refetch button and New Job Application link', () => {
     const onRefetchMock = jest.fn();
     const onSearchMock = jest.fn();
-    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} />, {
+    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} isLoading={false} />, {
       wrapper: ConfirmationDialogWrapper,
     });
     expect(screen.getByPlaceholderText(/digite um cpf válido/i)).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     const onRefetchMock = jest.fn();
     const onSearchMock = jest.fn();
-    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} />, {
+    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} isLoading={false} />, {
       wrapper: ConfirmationDialogWrapper,
     });
     await user.click(screen.getByRole('button', { name: /refetch/i }));
@@ -30,7 +30,7 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     const onRefetchMock = jest.fn();
     const onSearchMock = jest.fn();
-    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} />, {
+    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} isLoading={false} />, {
       wrapper: ConfirmationDialogWrapper,
     });
     const cpfInput = screen.getByPlaceholderText(/digite um cpf válido/i);
@@ -43,7 +43,7 @@ describe('SearchBar', () => {
     const user = userEvent.setup();
     const onRefetchMock = jest.fn();
     const onSearchMock = jest.fn();
-    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} />, {
+    render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} isLoading={false} />, {
       wrapper: ConfirmationDialogWrapper,
     });
     const newJobApplicationLink = screen.getByRole('link', { name: /nova admissão/i });
