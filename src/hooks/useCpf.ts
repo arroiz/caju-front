@@ -1,24 +1,26 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { getMaskedCpf, isValidCpf } from '~/helpers/cpf';
 
+const INITIAL_VALUE = {
+  cpf: '',
+  isValid: false,
+};
+
 export const useCpf = () => {
-  const [value, setValue] = useState('');
-  const [isValid, setIsValid] = useState(false);
+  const [state, setState] = useState(INITIAL_VALUE);
 
   const setCpf = useCallback((newCpf: string) => {
-    setValue(getMaskedCpf(newCpf));
+    const maskedCpf = getMaskedCpf(newCpf);
+    const isValid = isValidCpf(maskedCpf);
+
+    setState({
+      cpf: maskedCpf,
+      isValid,
+    });
   }, []);
 
-  useEffect(() => {
-    const newValidation = isValidCpf(value);
-    if (isValid !== newValidation) {
-      setIsValid(newValidation);
-    }
-  }, [value, isValid]);
-
   return {
-    cpf: value,
     setCpf,
-    isValid,
+    ...state,
   };
 };
