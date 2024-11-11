@@ -40,7 +40,7 @@ describe('DashboardPage', () => {
     render(<DashboardPage />, {
       wrapper: ConfirmationDialogWrapper,
     });
-    expect(await screen.findByLabelText('loading')).toBeInTheDocument();
+    expect(await screen.findByLabelText('carregando')).toBeInTheDocument();
   });
 
   it('should render SearchBar with CPF input, refetch button and New Job Application link', async () => {
@@ -53,7 +53,7 @@ describe('DashboardPage', () => {
       wrapper: ConfirmationDialogWrapper,
     });
     expect(screen.getByPlaceholderText(/digite um cpf válido/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /refetch/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /recarregar/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /nova admissão/i })).toBeInTheDocument();
   });
 

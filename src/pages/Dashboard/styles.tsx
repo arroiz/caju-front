@@ -14,7 +14,7 @@ export const LoadingContainer = styled.div`
     pointer-events: none;
   }
 
-  &[aria-busy='true'] > [aria-label='loading'] {
+  &[aria-busy='true'] > [aria-label='carregando'] {
     position: absolute;
     background: rgba(255, 255, 255, 0.7);
     display: flex;

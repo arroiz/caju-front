@@ -5,11 +5,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 describe('IconButton', () => {
   it('should show IconButton', () => {
     render(
-      <IconButton aria-label="back">
+      <IconButton aria-label="voltar">
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
-    expect(screen.getByLabelText('back')).toBeInTheDocument();
+    expect(screen.getByLabelText('voltar')).toBeInTheDocument();
   });
 
   it('should call onClick when the IconButton is clicked', () => {
@@ -25,11 +25,11 @@ describe('IconButton', () => {
 
   it('should be focusable', () => {
     render(
-      <IconButton aria-label="back">
+      <IconButton aria-label="voltar">
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
-    const button = screen.getByLabelText('back');
+    const button = screen.getByLabelText('voltar');
     button.focus();
     expect(button).toHaveFocus();
   });

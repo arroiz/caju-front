@@ -14,7 +14,7 @@ const selectors = {
     applicationDate: () => screen.getByTestId(/application-date-input/i),
   },
   submitButton: () => screen.getByRole('button', { name: /cadastrar/i }),
-  backLink: () => screen.getByRole('link', { name: /back/i }),
+  backLink: () => screen.getByRole('link', { name: /voltar/i }),
 };
 
 describe('NewJobApplication', () => {
