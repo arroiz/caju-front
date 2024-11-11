@@ -1,16 +1,17 @@
-import Router from '~/router';
-import { Header } from './components/Header';
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-
-const queryClient = new QueryClient();
+import { Toaster } from 'react-hot-toast';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { Header, HeaderTitle } from './components/Header';
+import { Router } from '~/router';
+import { queryClient } from '~/config/queryClient';
 
 export function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header>
-        <h1>Caju Front Teste</h1>
+        <HeaderTitle>Plataforma de Admissão</HeaderTitle>
       </Header>
       <Router />
+      <Toaster />
     </QueryClientProvider>
   );
 }
