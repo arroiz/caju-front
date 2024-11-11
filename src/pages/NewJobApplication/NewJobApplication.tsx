@@ -7,6 +7,7 @@ import { NewJobApplicationForm } from './components/NewJobApplicationForm/NewJob
 import { useCreateJobApplication } from '~/hooks/useCreateJobApplication';
 import { JobApplicationCreationData } from '~/services/jobApplications/types';
 import { JOB_APPLICATION_STATUS } from '~/types/status';
+import { onlyNumbers } from '~/helpers/cpf';
 
 const dateFormat = (inputDate: string) => {
   const [year, month, day] = inputDate.split('-');
@@ -22,6 +23,7 @@ export const NewJobApplication = () => {
       ...data,
       status: JOB_APPLICATION_STATUS.REVIEW,
       applicationDate: dateFormat(data.applicationDate),
+      cpf: onlyNumbers(data.cpf),
     });
     history.push(routes.dashboard);
   };
