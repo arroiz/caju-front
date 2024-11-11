@@ -26,7 +26,7 @@ test.describe('Render page scenarios', () => {
   test('should render loading indicator while page is loading', async ({ page }) => {
     await page.route('**/job-applications', (route) => route.abort());
     await page.goto('http://localhost:3001/#/dashboard');
-    await expect(page.locator('div[aria-label="loading"]')).toBeVisible();
+    await expect(page.locator('div[aria-label="carregando"]')).toBeVisible();
   });
 
   test('should render a error message and empty message when the job applications request fails', async ({
@@ -34,7 +34,7 @@ test.describe('Render page scenarios', () => {
   }) => {
     await page.route('**/job-applications', (route) => route.abort());
     await page.goto('http://localhost:3001/#/dashboard');
-    await page.locator('div[aria-label="loading"]').waitFor({
+    await page.locator('div[aria-label="carregando"]').waitFor({
       state: 'detached',
     });
     await expect(page.getByText('Falha ao carregar candidaturas.')).toBeVisible();
