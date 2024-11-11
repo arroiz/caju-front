@@ -12,5 +12,5 @@ export const useCreateJobApplication = () =>
     mutationKey: [CREATE_JOB_APPLICATION_MUTATION_KEY],
     mutationFn: (data: JobApplicationCreationData) => createJobApplicationService(data),
     onError: () => toast.error('Erro ao salvar candidatura'),
-    onSuccess: () => toast.success('Candidatura salva com sucesso'),
+    onSuccess: () => toast.success('Nova candidatura criada com sucesso'),
   });

@@ -39,7 +39,9 @@ export const NewJobApplicationForm = ({ onSubmit }: NewJobApplicationFormProps) 
   const handleUpdateCpf = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const cpfMasked = getMaskedCpf(event.target.value);
-      setValue('cpf', cpfMasked);
+      setValue('cpf', cpfMasked, {
+        shouldValidate: true,
+      });
     },
     [setValue],
   );
