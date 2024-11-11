@@ -11,17 +11,17 @@ const DEFAULT_VALUES = {
 const getColorSchemeStyles = ({ $colorScheme }: StyledIconButtonProps) =>
   ({
     primary: css`
-      border: 2px solid #32be32;
+      border: 2px solid #38a169;
 
       svg {
-        color: #32be32;
+        color: #38a169;
       }
 
       &:hover {
-        border: 2px solid #59d359;
+        border: 2px solid #38a169;
 
         svg {
-          color: #59d359;
+          color: #38a169;
         }
       }
     `,
@@ -43,6 +43,7 @@ export const IconButton = styled.button<StyledIconButtonProps>`
   align-items: center;
   justify-content: center;
   background-color: transparent;
+  transition: background 0.3s ease-in-out;
 
   &:disabled {
     opacity: 0.6;

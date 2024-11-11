@@ -5,8 +5,8 @@ const jobApplicationStatusStyles: {
   [key in JOB_APPLICATION_STATUS]: { background: string; title: string };
 } = {
   REVIEW: {
-    background: '#FDF8E9',
-    title: '#EFC24D',
+    background: '#ffe3c0',
+    title: '#532d00',
   },
   APPROVED: {
     background: '#EEEEFD',

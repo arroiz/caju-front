@@ -28,11 +28,11 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) =>
 const getColorSchemeStyles = ({ $colorScheme }: StyledButtonProps) =>
   ({
     primary: css`
-      background-color: #32be32;
+      background-color: #38a169;
       color: #fff;
 
       &:hover {
-        background-color: #59d359;
+        background-color: #2f855a;
       }
     `,
     transparent: css`
@@ -88,6 +88,7 @@ export const Button = styled.button<StyledButtonProps>`
   cursor: pointer;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   text-decoration: none;
+  transition: background 0.2s ease-in-out;
 
   &:disabled {
     opacity: 0.6;
