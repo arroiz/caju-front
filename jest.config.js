@@ -3,6 +3,7 @@ export default {
   verbose: true,
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
+  testMatch: ['<rootDir>/src/**/*.(test|spec).(js|jsx|ts|tsx)'],
   transform: {
     '^.+\\.tsx?$': ['ts-jest', { isolatedModules: true }],
     '^.+\\.(js|jsx)$': 'babel-jest',
