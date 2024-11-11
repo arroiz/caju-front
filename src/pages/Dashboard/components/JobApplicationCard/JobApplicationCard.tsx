@@ -71,16 +71,16 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
         {jobApplication.status === JOB_APPLICATION_STATUS.REVIEW ? (
           <>
             <Button
-              size="sm"
-              bgcolor="rgb(255, 145, 154)"
+              $size="sm"
+              $colorScheme="danger"
               disabled={isPending}
               onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.REPROVED)}
             >
               Reprovar
             </Button>
             <Button
-              size="sm"
-              bgcolor="rgb(155, 229, 155)"
+              $size="sm"
+              $colorScheme="success"
               disabled={isPending}
               onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.APPROVED)}
             >
@@ -89,15 +89,20 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
           </>
         ) : (
           <Button
-            size="sm"
-            bgcolor="#ff8858"
+            $size="sm"
+            $colorScheme="warning"
             disabled={isPending}
             onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.REVIEW)}
           >
             Revisar novamente
           </Button>
         )}
-        <IconButton color="black" aria-label="deletar" onClick={handleDeleteJobApplication}>
+        <IconButton
+          color="black"
+          $colorScheme="ghost"
+          aria-label="deletar"
+          onClick={handleDeleteJobApplication}
+        >
           <HiOutlineTrash />
         </IconButton>
       </S.CardFooter>

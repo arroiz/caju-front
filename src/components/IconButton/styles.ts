@@ -1,8 +1,41 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const IconButton = styled.button`
+export type StyledIconButtonProps = {
+  $colorScheme?: 'primary' | 'ghost';
+};
+
+const DEFAULT_VALUES = {
+  colorScheme: 'primary',
+};
+
+const getColorSchemeStyles = ({ $colorScheme }: StyledIconButtonProps) =>
+  ({
+    primary: css`
+      border: 2px solid #32be32;
+
+      svg {
+        color: #32be32;
+      }
+
+      &:hover {
+        border: 2px solid #59d359;
+
+        svg {
+          color: #59d359;
+        }
+      }
+    `,
+    ghost: css`
+      border: 1px solid black;
+
+      svg {
+        color: black;
+      }
+    `,
+  })[$colorScheme || DEFAULT_VALUES.colorScheme];
+
+export const IconButton = styled.button<StyledIconButtonProps>`
   cursor: pointer;
-  border: 2px solid #64a98c;
   width: fit-content;
   padding: 4px;
   border-radius: 24px;
@@ -11,7 +44,10 @@ export const IconButton = styled.button`
   justify-content: center;
   background-color: transparent;
 
-  svg {
-    color: #64a98c;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
+
+  ${(props) => getColorSchemeStyles(props)}
 `;

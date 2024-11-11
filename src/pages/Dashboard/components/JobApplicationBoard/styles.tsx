@@ -20,10 +20,15 @@ const jobApplicationStatusStyles: {
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, min(calc(100vw - 48px), 500px));
+  overflow-x: auto;
   grid-gap: 24px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 24px;
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const Column = styled.div<{ status: JOB_APPLICATION_STATUS }>`

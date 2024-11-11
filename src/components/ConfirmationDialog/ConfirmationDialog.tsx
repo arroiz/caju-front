@@ -50,7 +50,12 @@ export const ConfirmationDialog = ({
         <S.DialogDescription>{options.description}</S.DialogDescription>
       </S.DialogContent>
       <S.DialogFooter>
-        <Button onClick={onCancel} disabled={isLoading}>
+        <Button
+          $variant="outline"
+          $colorScheme="transparent"
+          onClick={onCancel}
+          disabled={isLoading}
+        >
           {options.cancelButtonLabel}
         </Button>
         <Button onClick={handleConfirm} disabled={isLoading}>

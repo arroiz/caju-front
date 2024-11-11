@@ -12,12 +12,12 @@ export const useUpdateJobApplication = () => {
   return useMutation({
     mutationKey: [UPDATE_JOB_APPLICATION_MUTATION_KEY],
     mutationFn: (data: JobApplicationUpdateData) => updateJobApplication(data),
-    onError: () => toast.error('Erro ao salvar candidatura'),
+    onError: () => toast.error('Erro ao alterar candidatura'),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [LIST_JOB_APPLICATIONS_QUERY_KEY],
       });
-      toast.success('Candidatura salva com sucesso');
+      toast.success('Candidatura alterada com sucesso');
     },
   });
 };

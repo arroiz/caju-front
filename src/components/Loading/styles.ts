@@ -5,8 +5,8 @@ export const LoadingDots = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 5px;
-  background-color: rgb(155, 229, 155);
-  color: rgb(155, 229, 155);
+  background-color: #32be32;
+  color: #32be32;
   animation: dot-flashing 1s infinite linear alternate;
   animation-delay: 0.5s;
 
@@ -23,8 +23,8 @@ export const LoadingDots = styled.div`
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: rgb(155, 229, 155);
-    color: rgb(155, 229, 155);
+    background-color: #32be32;
+    color: #32be32;
     animation: dot-flashing 1s infinite alternate;
     animation-delay: 0s;
   }
@@ -34,19 +34,19 @@ export const LoadingDots = styled.div`
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: rgb(155, 229, 155);
-    color: rgb(155, 229, 155);
+    background-color: #32be32;
+    color: #32be32;
     animation: dot-flashing 1s infinite alternate;
     animation-delay: 1s;
   }
 
   @keyframes dot-flashing {
     0% {
-      background-color: rgb(155, 229, 155);
+      background-color: #32be32;
     }
     50%,
     100% {
-      background-color: rgba(155, 229, 155, 0.2);
+      background-color: rgba(50, 190, 50, 0.2);
     }
   }
 `;

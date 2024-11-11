@@ -5,7 +5,7 @@ export const Dialog = styled.dialog`
   border-radius: 16px;
   padding: 32px;
   width: 100%;
-  max-width: min(80vw, 600px);
+  max-width: min(95vw, 600px);
   height: fit-content;
   border: none;
   margin-inline: auto;
@@ -42,7 +42,7 @@ export const DialogContent = styled.div`
 `;
 
 export const DialogTitle = styled.h3`
-  font-size: 24px;
+  font-size: 18px;
 `;
 export const DialogDescription = styled.p`
   font-size: 16px;

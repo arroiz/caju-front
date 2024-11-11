@@ -16,10 +16,10 @@ const Dashboard = () => {
 
   return (
     <S.Container>
-      <SearchBar onSearch={setSearchFilters} onRefetch={refetch} />
+      <SearchBar onSearch={setSearchFilters} onRefetch={refetch} isLoading={isFetching} />
       <S.LoadingContainer aria-busy={isFetching}>
         {isFetching ? <Loading /> : null}
-        {!isLoading ? <JobApplicationBoard jobApplications={jobApplications} /> : null}
+        {!isLoading ? <JobApplicationBoard jobApplicationList={jobApplications} /> : null}
       </S.LoadingContainer>
     </S.Container>
   );

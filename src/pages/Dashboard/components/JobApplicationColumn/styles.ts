@@ -18,14 +18,6 @@ const jobApplicationStatusStyles: {
   },
 };
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 24px;
-  justify-content: center;
-  margin-top: 24px;
-`;
-
 export const Column = styled.div<{ status: JOB_APPLICATION_STATUS }>`
   height: auto;
   display: flex;

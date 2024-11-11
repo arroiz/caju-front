@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { IconButton } from '~/components/IconButton';
 
 export const Card = styled.div`
   border: 4px solid #fff;
@@ -35,7 +34,7 @@ export const CardFooter = styled.div`
   justify-content: flex-start;
   gap: 16px;
 
-  ${IconButton} {
+  & > [aria-label='deletar'] {
     margin-left: auto;
   }
 `;

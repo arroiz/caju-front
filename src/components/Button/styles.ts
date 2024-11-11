@@ -1,47 +1,100 @@
 import styled, { css } from 'styled-components';
 
-type ButtonProps = {
-  size: 'md' | 'sm';
-  bgcolor?: string;
-  color?: string;
+type Variant = 'outline' | 'solid';
+type ColorScheme = 'primary' | 'transparent' | 'danger' | 'success' | 'warning';
+
+export type StyledButtonProps = {
+  $variant?: Variant;
+  $colorScheme?: ColorScheme;
+  $size?: 'md' | 'sm';
 };
 
-const defaultSize = 'md';
+const DEFAULT_VALUES = {
+  size: 'md',
+  variant: 'solid',
+  colorScheme: 'primary',
+};
 
-const getSizeStyles = (props: ButtonProps) => {
-  const styles = {
+const getVariantStyles = ({ $variant }: StyledButtonProps) =>
+  ({
+    outline: css`
+      border: 1px solid black;
+    `,
+    solid: css`
+      border: none;
+    `,
+  })[$variant || DEFAULT_VALUES.variant];
+
+const getColorSchemeStyles = ({ $colorScheme }: StyledButtonProps) =>
+  ({
+    primary: css`
+      background-color: #32be32;
+      color: #fff;
+
+      &:hover {
+        background-color: #59d359;
+      }
+    `,
+    transparent: css`
+      background-color: transparent;
+
+      &:hover {
+        background-color: transparent;
+      }
+    `,
+    success: css`
+      background-color: rgb(155, 229, 155);
+
+      &:hover {
+        background-color: rgba(155, 229, 155, 0.9);
+      }
+    `,
+    danger: css`
+      background-color: rgb(255, 145, 154);
+
+      &:hover {
+        background-color: rgba(255, 145, 154, 0.9);
+      }
+    `,
+    warning: css`
+      background-color: rgb(255, 136, 88);
+
+      &:hover {
+        background-color: rgb(255, 136, 88, 0.9);
+      }
+    `,
+  })[$colorScheme || DEFAULT_VALUES.colorScheme];
+
+const getSizeStyles = ({ $size }: StyledButtonProps) =>
+  ({
     sm: css`
       font-size: 12px;
       border-radius: 4px;
       padding: 4px 16px;
-      background-color: ${props.bgcolor ?? 'none'};
-      color: ${props.color ?? '#000'};
     `,
     md: css`
       border-radius: 36px;
       font-size: 16px;
-      padding: 8px 32px;
-      background-color: #64a98c;
-      color: #fff;
+      padding: 0 16px;
       font-weight: 600;
       height: 40px;
+      min-width: 40px;
     `,
-  };
+  })[$size || DEFAULT_VALUES.size];
 
-  return styles[props.size || defaultSize];
-};
-
-export const Button = styled.button<ButtonProps>`
+export const Button = styled.button<StyledButtonProps>`
   display: flex;
   align-items: center;
-  border: none;
   cursor: pointer;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   text-decoration: none;
-  ${(props) => getSizeStyles(props)}
 
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
+
+  ${(props) => getVariantStyles(props)}
+  ${(props) => getSizeStyles(props)}
+  ${(props) => getColorSchemeStyles(props)}
 `;

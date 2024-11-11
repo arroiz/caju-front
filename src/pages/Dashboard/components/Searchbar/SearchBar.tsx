@@ -12,9 +12,10 @@ import { useEffect } from 'react';
 type SearchBarProps = {
   onSearch: (params: JobApplicationListParams) => void;
   onRefetch: () => void;
+  isLoading: boolean;
 };
 
-export const SearchBar = ({ onSearch, onRefetch }: SearchBarProps) => {
+export const SearchBar = ({ onSearch, onRefetch, isLoading }: SearchBarProps) => {
   const { cpf, setCpf, isValid } = useCpf();
 
   useEffect(() => {
@@ -32,10 +33,10 @@ export const SearchBar = ({ onSearch, onRefetch }: SearchBarProps) => {
         maxLength={14}
       />
       <S.Actions>
-        <IconButton aria-label="refetch" onClick={onRefetch}>
+        <IconButton aria-label="refetch" disabled={isLoading} onClick={onRefetch}>
           <HiRefresh />
         </IconButton>
-        <Button as={Link} to={routes.newJobApplication}>
+        <Button as={Link} xpto="teste" to={routes.newJobApplication}>
           Nova Admissão
         </Button>
       </S.Actions>
