@@ -49,13 +49,13 @@ export const SearchBar = ({ onSearch, onRefetch, isLoading }: SearchBarProps) =>
           maxLength={14}
         />
         {cpf.length > 0 ? (
-          <IconButton onClick={onReset} aria-label="reset" $colorScheme="danger">
+          <IconButton onClick={onReset} aria-label="limpar campo" $colorScheme="danger">
             <HiOutlineX size={16} />
           </IconButton>
         ) : null}
       </S.InputCpfContainer>
       <S.Actions>
-        <IconButton aria-label="refetch" disabled={isLoading} onClick={onRefetch}>
+        <IconButton aria-label="recarregar" disabled={isLoading} onClick={onRefetch}>
           <HiRefresh />
         </IconButton>
         <Button as={Link} xpto="teste" to={routes.newJobApplication}>

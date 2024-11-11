@@ -31,7 +31,7 @@ export const NewJobApplication = () => {
   return (
     <S.Container>
       <S.Card>
-        <IconButton as={Link} to={routes.dashboard} aria-label="back">
+        <IconButton as={Link} to={routes.dashboard} aria-label="voltar">
           <HiOutlineArrowLeft size={24} />
         </IconButton>
         <NewJobApplicationForm onSubmit={handleSubmit} />

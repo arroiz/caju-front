@@ -5,7 +5,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 describe('IconButton', () => {
   it('should show IconButton', () => {
     render(
-      <IconButton aria-label="back">
+      <IconButton aria-label="voltar">
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
@@ -25,7 +25,7 @@ describe('IconButton', () => {
 
   it('should be focusable', () => {
     render(
-      <IconButton aria-label="back">
+      <IconButton aria-label="voltar">
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
