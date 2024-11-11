@@ -13,6 +13,12 @@ export const Container = styled.div`
   }
 `;
 
+export const InputCpfContainer = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+`;
+
 export const Actions = styled.div`
   display: flex;
   flex-direction: row-reverse;

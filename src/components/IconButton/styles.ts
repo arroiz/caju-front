@@ -11,10 +11,10 @@ const DEFAULT_VALUES = {
 const getColorSchemeStyles = ({ $colorScheme }: StyledIconButtonProps) =>
   ({
     primary: css`
-      border: 2px solid #38a169;
+      border: 2px solid #2f855a;
 
       svg {
-        color: #38a169;
+        color: #2f855a;
       }
 
       &:hover {
@@ -22,6 +22,21 @@ const getColorSchemeStyles = ({ $colorScheme }: StyledIconButtonProps) =>
 
         svg {
           color: #38a169;
+        }
+      }
+    `,
+    danger: css`
+      border: 2px solid rgb(255, 145, 154);
+
+      svg {
+        color: rgb(255, 145, 154);
+      }
+
+      &:hover {
+        border: 2px solid rgb(255, 145, 154, 0.9);
+
+        svg {
+          color: rgb(255, 145, 154, 0.9);
         }
       }
     `,

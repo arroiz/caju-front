@@ -28,11 +28,11 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) =>
 const getColorSchemeStyles = ({ $colorScheme }: StyledButtonProps) =>
   ({
     primary: css`
-      background-color: #38a169;
+      background-color: #2f855a;
       color: #fff;
 
       &:hover {
-        background-color: #2f855a;
+        background-color: #38a169;
       }
     `,
     transparent: css`
