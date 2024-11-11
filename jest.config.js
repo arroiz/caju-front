@@ -9,6 +9,7 @@ export default {
   },
   moduleNameMapper: {
     '^~/(.+)': '<rootDir>/src/$1',
+    '^./environmentConstants': '<rootDir>/__mocks__/environmentConstantsMock.ts',
   },
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  setupFilesAfterEnv: ['@testing-library/jest-dom', '<rootDir>/src/config/setupTests.ts'],
 };
