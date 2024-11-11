@@ -10,6 +10,7 @@ export const IconButton = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
+
   svg {
     color: #64a98c;
   }
