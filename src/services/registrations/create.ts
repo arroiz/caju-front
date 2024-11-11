@@ -1,5 +1,5 @@
 import { apiClient } from '~/config/apiClient';
-import { RegistrationCreationData } from './types';
+import { RegistrationCreationData, RegistrationServerData } from './types';
 
 export const createRegistrationService = (data: RegistrationCreationData) =>
-  apiClient.post('/registrations', data);
+  apiClient.post<RegistrationServerData>('/registrations', data);

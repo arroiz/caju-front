@@ -1,5 +1,5 @@
 import { apiClient } from '~/config/apiClient';
-import { RegistrationDeleteProps } from './types';
+import { RegistrationDeleteParams } from './types';
 
-export const deleteRegistrationService = ({ id }: RegistrationDeleteProps) =>
-  apiClient.delete(`/${id}`);
+export const deleteRegistrationService = ({ id }: RegistrationDeleteParams) =>
+  apiClient.delete(`/registrations/${id}`);
