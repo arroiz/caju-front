@@ -4,9 +4,9 @@ import { IconButton } from '~/components/IconButton';
 import { Link, useHistory } from 'react-router-dom';
 import { routes } from '~/router/routes';
 import { NewJobApplicationForm } from './components/NewJobApplicationForm/NewJobApplicationForm';
-import { useCreateRegistration } from '~/hooks/useCreateRegistration';
-import { RegistrationCreationData } from '~/services/registrations/types';
-import { REGISTRATION_STATUS } from '~/types/status';
+import { useCreateJobApplication } from '~/hooks/useCreateJobApplication';
+import { JobApplicationCreationData } from '~/services/jobApplications/types';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
 
 const dateFormat = (inputDate: string) => {
   const [year, month, day] = inputDate.split('-');
@@ -14,14 +14,14 @@ const dateFormat = (inputDate: string) => {
 };
 
 export const NewJobApplication = () => {
-  const { mutateAsync: createNewJobApplication } = useCreateRegistration();
+  const { mutateAsync: createNewJobApplication } = useCreateJobApplication();
   const history = useHistory();
 
-  const handleSubmit = async (data: Omit<RegistrationCreationData, 'status'>) => {
+  const handleSubmit = async (data: Omit<JobApplicationCreationData, 'status'>) => {
     await createNewJobApplication({
       ...data,
-      status: REGISTRATION_STATUS.REVIEW,
-      admissionDate: dateFormat(dateFormat(data.admissionDate)),
+      status: JOB_APPLICATION_STATUS.REVIEW,
+      applicationDate: dateFormat(data.applicationDate),
     });
     history.push(routes.dashboard);
   };

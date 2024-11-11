@@ -15,7 +15,7 @@ const schema = z.object({
     .regex(/^\D.*/, 'O nome completo não pode começar com um número.')
     .regex(/^.*\s.*$/, 'O nome completo deve ter pelo menos um espaço.'),
   cpf: z.string().refine(isValidCpf, { message: 'CPF inválido.' }),
-  admissionDate: z
+  applicationDate: z
     .string()
     .refine((data) => !isNaN(Date.parse(data)), { message: 'Data de admissão inválida.' }),
 });
@@ -73,11 +73,11 @@ export const NewJobApplicationForm = ({ onSubmit }: NewJobApplicationFormProps) 
       />
       <Input
         label="Data de admissão"
-        data-testid="admission-date-input"
+        data-testid="application-date-input"
         type="date"
-        {...register('admissionDate')}
-        isInvalid={Boolean(errors.admissionDate)}
-        errorMessage={errors.admissionDate?.message}
+        {...register('applicationDate')}
+        isInvalid={Boolean(errors.applicationDate)}
+        errorMessage={errors.applicationDate?.message}
       />
       <Button type="submit" disabled={isSubmitting}>
         Cadastrar

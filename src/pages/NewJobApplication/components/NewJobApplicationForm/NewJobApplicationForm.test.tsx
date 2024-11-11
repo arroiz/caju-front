@@ -7,7 +7,7 @@ const selectors = {
     name: () => screen.getByPlaceholderText(/nome/i),
     email: () => screen.getByPlaceholderText(/email/i),
     cpf: () => screen.getByPlaceholderText(/cpf/i),
-    admissionDate: () => screen.getByTestId(/admission-date-input/i),
+    applicationDate: () => screen.getByTestId(/application-date-input/i),
   },
   submitButton: () => screen.getByRole('button', { name: /cadastrar/i }),
 };
@@ -19,7 +19,7 @@ describe('NewJobApplicationForm', () => {
     expect(selectors.inputs.name()).toBeInTheDocument();
     expect(selectors.inputs.email()).toBeInTheDocument();
     expect(selectors.inputs.cpf()).toBeInTheDocument();
-    expect(selectors.inputs.admissionDate()).toBeInTheDocument();
+    expect(selectors.inputs.applicationDate()).toBeInTheDocument();
     expect(selectors.submitButton()).toBeInTheDocument();
   });
 
@@ -83,8 +83,8 @@ describe('NewJobApplicationForm', () => {
     const cpfInput = selectors.inputs.cpf();
     await user.click(cpfInput);
     await user.keyboard('23650697033');
-    const admissionDateInput = selectors.inputs.admissionDate();
-    await user.click(admissionDateInput);
+    const applicationDateInput = selectors.inputs.applicationDate();
+    await user.click(applicationDateInput);
     await user.keyboard('2024-10-10');
     const submitButton = selectors.submitButton();
     await user.click(submitButton);

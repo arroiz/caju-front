@@ -1,36 +1,36 @@
 import { render, screen } from '@testing-library/react';
 import { JobApplicationBoard } from '.';
-import { REGISTRATION_STATUS } from '~/types/status';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
 import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
 
 const defaultValue = {
-  [REGISTRATION_STATUS.REVIEW]: [
+  [JOB_APPLICATION_STATUS.REVIEW]: [
     {
-      admissionDate: '22/10/2023',
+      applicationDate: '22/10/2023',
       email: 'luiz@caju.com.br',
       employeeName: 'Luiz Filho',
-      status: REGISTRATION_STATUS.REVIEW,
+      status: JOB_APPLICATION_STATUS.REVIEW,
       cpf: '56642105087',
       id: '3',
     },
   ],
-  [REGISTRATION_STATUS.REPROVED]: [
+  [JOB_APPLICATION_STATUS.REPROVED]: [
     {
       id: '2',
-      admissionDate: '22/10/2023',
+      applicationDate: '22/10/2023',
       email: 'jose@caju.com.br',
       employeeName: 'José Leão',
-      status: REGISTRATION_STATUS.REPROVED,
+      status: JOB_APPLICATION_STATUS.REPROVED,
       cpf: '78502270001',
     },
   ],
-  [REGISTRATION_STATUS.APPROVED]: [
+  [JOB_APPLICATION_STATUS.APPROVED]: [
     {
       id: '1',
-      admissionDate: '22/10/2023',
+      applicationDate: '22/10/2023',
       email: 'filipe@caju.com.br',
       employeeName: 'Filipe Marins',
-      status: REGISTRATION_STATUS.REVIEW,
+      status: JOB_APPLICATION_STATUS.REVIEW,
       cpf: '78502270001',
     },
   ],

@@ -1,12 +1,12 @@
-import { Registration } from '~/types/registrations';
+import { JobApplication } from '~/types/jobApplication';
 import * as S from './styles';
-import { REGISTRATION_STATUS } from '~/types/status';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
 import { JobApplicationCard } from '../JobApplicationCard';
 
 type JobApplicationColumnProps = {
   title: string;
-  status: REGISTRATION_STATUS;
-  jobApplicationList: Registration[];
+  status: JOB_APPLICATION_STATUS;
+  jobApplicationList: JobApplication[];
 };
 
 export const JobApplicationColumn = ({

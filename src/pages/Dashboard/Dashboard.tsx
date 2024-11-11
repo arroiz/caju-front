@@ -1,25 +1,25 @@
 import { JobApplicationBoard } from './components/JobApplicationBoard';
 import * as S from './styles';
 import { SearchBar } from './components/Searchbar';
-import { useListRegistrations } from '~/hooks/useListRegistration';
+import { useListJobApplications } from '~/hooks/useListJobApplication';
 import { ConfirmationDialogProvider } from '~/contexts/ConfirmationDialogContext';
 import { Loading } from '~/components/Loading';
 
 const Dashboard = () => {
   const {
     isLoading,
-    data: registrations,
+    data: jobApplications,
     isFetching,
     setSearchFilters,
     refetch,
-  } = useListRegistrations();
+  } = useListJobApplications();
 
   return (
     <S.Container>
       <SearchBar onSearch={setSearchFilters} onRefetch={refetch} />
       <S.LoadingContainer aria-busy={isFetching}>
         {isFetching ? <Loading /> : null}
-        {!isLoading ? <JobApplicationBoard jobApplications={registrations} /> : null}
+        {!isLoading ? <JobApplicationBoard jobApplications={jobApplications} /> : null}
       </S.LoadingContainer>
     </S.Container>
   );

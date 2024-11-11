@@ -1,20 +1,20 @@
 import { render, screen } from '@testing-library/react';
 import { JobApplicationCard } from '.';
 import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
-import { REGISTRATION_STATUS } from '~/types/status';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
 import userEvent from '@testing-library/user-event';
 
 const jobApplication = {
   id: '1',
-  admissionDate: '22/10/2023',
+  applicationDate: '22/10/2023',
   email: 'filipe@caju.com.br',
   employeeName: 'Filipe Marins',
-  status: REGISTRATION_STATUS.REVIEW,
+  status: JOB_APPLICATION_STATUS.REVIEW,
   cpf: '78502270001',
 };
 
 describe('JobApplicationCard', () => {
-  it('should render name, email and admission date in the card', () => {
+  it('should render name, email and application date in the card', () => {
     render(<JobApplicationCard jobApplication={jobApplication} />, {
       wrapper: ConfirmationDialogWrapper,
     });
@@ -24,7 +24,7 @@ describe('JobApplicationCard', () => {
       }),
     ).toBeInTheDocument();
     expect(screen.getByText(jobApplication.email)).toBeInTheDocument();
-    expect(screen.getByText(jobApplication.admissionDate)).toBeInTheDocument();
+    expect(screen.getByText(jobApplication.applicationDate)).toBeInTheDocument();
   });
 
   it('should render approve, repprove and delete button when the job application is on Review', () => {
@@ -51,7 +51,7 @@ describe('JobApplicationCard', () => {
   it('should render review and delete button when the job application is Approved', () => {
     render(
       <JobApplicationCard
-        jobApplication={{ ...jobApplication, status: REGISTRATION_STATUS.APPROVED }}
+        jobApplication={{ ...jobApplication, status: JOB_APPLICATION_STATUS.APPROVED }}
       />,
       {
         wrapper: ConfirmationDialogWrapper,
@@ -72,7 +72,7 @@ describe('JobApplicationCard', () => {
   it('should render review and delete button when the job application is Reproved', () => {
     render(
       <JobApplicationCard
-        jobApplication={{ ...jobApplication, status: REGISTRATION_STATUS.APPROVED }}
+        jobApplication={{ ...jobApplication, status: JOB_APPLICATION_STATUS.APPROVED }}
       />,
       {
         wrapper: ConfirmationDialogWrapper,
@@ -156,7 +156,7 @@ describe('JobApplicationCard', () => {
     const user = userEvent.setup();
     render(
       <JobApplicationCard
-        jobApplication={{ ...jobApplication, status: REGISTRATION_STATUS.APPROVED }}
+        jobApplication={{ ...jobApplication, status: JOB_APPLICATION_STATUS.APPROVED }}
       />,
       {
         wrapper: ConfirmationDialogWrapper,

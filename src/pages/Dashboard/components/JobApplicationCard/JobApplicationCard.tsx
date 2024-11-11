@@ -1,25 +1,25 @@
 import { Button } from '~/components/Button';
 import * as S from './styles';
 import { HiOutlineMail, HiOutlineUser, HiOutlineCalendar, HiOutlineTrash } from 'react-icons/hi';
-import { Registration } from '~/types/registrations';
-import { REGISTRATION_STATUS } from '~/types/status';
-import { useUpdateRegistration } from '~/hooks/useUpdateRegistration';
+import { JobApplication } from '~/types/jobApplication';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
+import { useUpdateJobApplication } from '~/hooks/useUpdateJobApplication';
 import { IconButton } from '~/components/IconButton';
 import { useCallback } from 'react';
 import { useConfirmationDialog } from '~/contexts/ConfirmationDialogContext';
-import { useDeleteRegistration } from '~/hooks/useDeleteRegistration';
+import { useDeleteJobApplication } from '~/hooks/useDeleteJobApplication';
 
 type JobApplicationCardProps = {
-  jobApplication: Registration;
+  jobApplication: JobApplication;
 };
 
 export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) => {
-  const { mutateAsync: updateJobApplication, isPending } = useUpdateRegistration();
-  const { mutateAsync: deleteJobApplication } = useDeleteRegistration();
+  const { mutateAsync: updateJobApplication, isPending } = useUpdateJobApplication();
+  const { mutateAsync: deleteJobApplication } = useDeleteJobApplication();
   const { dispatchConfirmation } = useConfirmationDialog();
 
   const handleUpdateStatus = useCallback(
-    (newStatus: REGISTRATION_STATUS) => () =>
+    (newStatus: JOB_APPLICATION_STATUS) => () =>
       dispatchConfirmation({
         onConfirm: async () => {
           await updateJobApplication({
@@ -64,17 +64,17 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
         </S.InformationItem>
         <S.InformationItem>
           <HiOutlineCalendar />
-          <span>{jobApplication.admissionDate}</span>
+          <span>{jobApplication.applicationDate}</span>
         </S.InformationItem>
       </S.InformationList>
       <S.CardFooter>
-        {jobApplication.status === REGISTRATION_STATUS.REVIEW ? (
+        {jobApplication.status === JOB_APPLICATION_STATUS.REVIEW ? (
           <>
             <Button
               size="sm"
               bgcolor="rgb(255, 145, 154)"
               disabled={isPending}
-              onClick={handleUpdateStatus(REGISTRATION_STATUS.REPROVED)}
+              onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.REPROVED)}
             >
               Reprovar
             </Button>
@@ -82,7 +82,7 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
               size="sm"
               bgcolor="rgb(155, 229, 155)"
               disabled={isPending}
-              onClick={handleUpdateStatus(REGISTRATION_STATUS.APPROVED)}
+              onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.APPROVED)}
             >
               Aprovar
             </Button>
@@ -92,7 +92,7 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
             size="sm"
             bgcolor="#ff8858"
             disabled={isPending}
-            onClick={handleUpdateStatus(REGISTRATION_STATUS.REVIEW)}
+            onClick={handleUpdateStatus(JOB_APPLICATION_STATUS.REVIEW)}
           >
             Revisar novamente
           </Button>

@@ -1,17 +1,17 @@
-import { REGISTRATION_STATUS } from '~/types/status';
-import { Registration } from '~/types/registrations';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
+import { JobApplication } from '~/types/jobApplication';
 import * as S from './styles';
 import { JobApplicationColumn } from '../JobApplicationColumn/JobApplicationColumn';
 import { useMemo } from 'react';
 
 const allColumns = [
-  { status: REGISTRATION_STATUS.REVIEW, title: 'Pronto para revisar' },
-  { status: REGISTRATION_STATUS.APPROVED, title: 'Aprovado' },
-  { status: REGISTRATION_STATUS.REPROVED, title: 'Reprovado' },
+  { status: JOB_APPLICATION_STATUS.REVIEW, title: 'Pronto para revisar' },
+  { status: JOB_APPLICATION_STATUS.APPROVED, title: 'Aprovado' },
+  { status: JOB_APPLICATION_STATUS.REPROVED, title: 'Reprovado' },
 ];
 
 type Props = {
-  jobApplications?: { [key in REGISTRATION_STATUS]: Registration[] };
+  jobApplications?: { [key in JOB_APPLICATION_STATUS]: JobApplication[] };
 };
 
 export const JobApplicationBoard = ({ jobApplications }: Props) => {

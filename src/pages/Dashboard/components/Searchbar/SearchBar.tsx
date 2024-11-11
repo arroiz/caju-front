@@ -6,11 +6,11 @@ import { Input } from '~/components/Input';
 import { routes } from '~/router/routes';
 import * as S from './styles';
 import { useCpf } from '~/hooks/useCpf';
-import { RegistrationListParams } from '~/services/registrations/types';
+import { JobApplicationListParams } from '~/services/jobApplications/types';
 import { useEffect } from 'react';
 
 type SearchBarProps = {
-  onSearch: (params: RegistrationListParams) => void;
+  onSearch: (params: JobApplicationListParams) => void;
   onRefetch: () => void;
 };
 

@@ -1,7 +1,7 @@
 {
-  "registrations": [
+  "job-applications": [
     {
-      "admissionDate": "22/10/2023",
+      "applicationDate": "22/10/2023",
       "email": "luiz@caju.com.br",
       "employeeName": "Luiz Filho",
       "status": "APPROVED",
@@ -10,7 +10,7 @@
     },
     {
       "id": "1",
-      "admissionDate": "22/10/2023",
+      "applicationDate": "22/10/2023",
       "email": "filipe@caju.com.br",
       "employeeName": "Filipe Marins",
       "status": "REVIEW",
@@ -18,7 +18,7 @@
     },
     {
       "id": "2",
-      "admissionDate": "22/10/2023",
+      "applicationDate": "22/10/2023",
       "email": "jose@caju.com.br",
       "employeeName": "José Leão",
       "status": "REPROVED",

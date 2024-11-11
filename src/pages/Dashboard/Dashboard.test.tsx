@@ -5,7 +5,7 @@ import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
 
 const defaultValue = [
   {
-    admissionDate: '23/10/2023',
+    applicationDate: '23/10/2023',
     email: 'luiz@caju.com.br',
     employeeName: 'Luiz Filho',
     status: 'APPROVED',
@@ -14,7 +14,7 @@ const defaultValue = [
   },
   {
     id: '1',
-    admissionDate: '22/10/2023',
+    applicationDate: '22/10/2023',
     email: 'filipe@caju.com.br',
     employeeName: 'Filipe Marins',
     status: 'REVIEW',
@@ -22,7 +22,7 @@ const defaultValue = [
   },
   {
     id: '2',
-    admissionDate: '25/10/2023',
+    applicationDate: '25/10/2023',
     email: 'jose@caju.com.br',
     employeeName: 'José Leão',
     status: 'REPROVED',
@@ -89,9 +89,9 @@ describe('DashboardPage', () => {
     expect(await screen.findByText(person1.email)).toBeInTheDocument();
     expect(await screen.findByText(person2.email)).toBeInTheDocument();
     expect(await screen.findByText(person3.email)).toBeInTheDocument();
-    expect(await screen.findByText(person1.admissionDate)).toBeInTheDocument();
-    expect(await screen.findByText(person2.admissionDate)).toBeInTheDocument();
-    expect(await screen.findByText(person3.admissionDate)).toBeInTheDocument();
+    expect(await screen.findByText(person1.applicationDate)).toBeInTheDocument();
+    expect(await screen.findByText(person2.applicationDate)).toBeInTheDocument();
+    expect(await screen.findByText(person3.applicationDate)).toBeInTheDocument();
   });
 
   it('should render empty message when there is no Job Applications available', async () => {

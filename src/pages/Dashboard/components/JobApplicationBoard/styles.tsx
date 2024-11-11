@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { REGISTRATION_STATUS } from '~/types/status';
+import { JOB_APPLICATION_STATUS } from '~/types/status';
 
-const registrationStatusStyles: {
-  [key in REGISTRATION_STATUS]: { background: string; title: string };
+const jobApplicationStatusStyles: {
+  [key in JOB_APPLICATION_STATUS]: { background: string; title: string };
 } = {
   REVIEW: {
     background: '#FDF8E9',
@@ -26,9 +26,9 @@ export const Container = styled.div`
   margin-top: 24px;
 `;
 
-export const Column = styled.div<{ status: REGISTRATION_STATUS }>`
+export const Column = styled.div<{ status: JOB_APPLICATION_STATUS }>`
   height: auto;
-  background-color: ${({ status }) => registrationStatusStyles[status].background};
+  background-color: ${({ status }) => jobApplicationStatusStyles[status].background};
   border-radius: 32px;
   min-height: 80vh;
   max-height: 80vh;
@@ -41,8 +41,8 @@ export const Description = styled.p`
   margin-top: 32px;
 `;
 
-export const TitleColumn = styled.h3<{ status: REGISTRATION_STATUS }>`
+export const TitleColumn = styled.h3<{ status: JOB_APPLICATION_STATUS }>`
   margin: 0px;
-  color: ${({ status }) => registrationStatusStyles[status].title};
+  color: ${({ status }) => jobApplicationStatusStyles[status].title};
   margin: 24px;
 `;
