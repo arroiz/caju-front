@@ -24,7 +24,6 @@ dist-ssr
 *.sln
 *.sw?
 .last-run.json
-/playwright-report
 .eslintcache
 
 # Yarn
@@ -35,3 +34,7 @@ dist-ssr
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+## Playwright
+/playwright-report
+/test-results

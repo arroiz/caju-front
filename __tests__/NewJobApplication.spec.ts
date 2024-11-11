@@ -10,8 +10,8 @@ const fillFormWithCorrectValues = async (page: Page) => {
 test('should render new job application page with form, fields and back button', async ({
   page,
 }) => {
-  await page.goto('http://localhost:3001/#/new-job-application');
-  await expect(page.getByLabel('back')).toBeVisible();
+  await page.goto('/#/new-job-application');
+  await expect(page.getByLabel('voltar')).toBeVisible();
   await expect(page.getByPlaceholder('Nome')).toBeVisible();
   await expect(page.getByPlaceholder('Email')).toBeVisible();
   await expect(page.getByPlaceholder('CPF')).toBeVisible();
@@ -20,14 +20,14 @@ test('should render new job application page with form, fields and back button',
 });
 
 test('should navigate to dashboard when back button is clicked', async ({ page }) => {
-  await page.goto('http://localhost:3001/#/new-job-application');
-  await page.getByLabel('back').click();
+  await page.goto('/#/new-job-application');
+  await page.getByLabel('voltar').click();
   await expect(page).toHaveURL(/.*\/dashboard/);
 });
 
 test.describe('Forming validation scenarios', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3001/#/new-job-application');
+    await page.goto('/#/new-job-application');
   });
 
   test('should show error inputs when click on register button before filling the form', async ({
@@ -96,7 +96,7 @@ test.describe('Forming validation scenarios', () => {
 
 test.describe('Submit form scenarios', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('http://localhost:3001/#/new-job-application');
+    await page.goto('/#/new-job-application');
     await fillFormWithCorrectValues(page);
   });
 

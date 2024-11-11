@@ -7,6 +7,7 @@ export default defineConfig({
   reporter: 'html',
   use: {
     headless: true,
+    baseURL: process.env.APP_BASE_URL || 'http://localhost:3001',
     viewport: { width: 1280, height: 720 },
     video: 'on-first-retry',
     screenshot: 'only-on-failure',
