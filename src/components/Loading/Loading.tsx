@@ -1,7 +1,11 @@
 import * as S from './styles';
 
-export const Loading = () => (
-  <div aria-label="carregando">
+type LoadingProps = {
+  isCentered?: boolean;
+};
+
+export const Loading = ({ isCentered }: LoadingProps) => (
+  <S.LoadingContainer isCentered={isCentered} aria-label="carregando">
     <S.LoadingDots />
-  </div>
+  </S.LoadingContainer>
 );

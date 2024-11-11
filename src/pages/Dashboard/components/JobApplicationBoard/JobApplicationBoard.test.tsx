@@ -38,13 +38,15 @@ describe('JobApplicationBoard', () => {
     expect(screen.getByText(/nenhuma candidatura disponível\./i)).toBeInTheDocument();
   });
 
-  it('should show render three columns when there is Job Applications available', () => {
+  it('should show render three columns when there is Job Applications available', async () => {
     render(<JobApplicationBoard jobApplicationList={defaultValue} />, {
       wrapper: ConfirmationDialogWrapper,
     });
-    expect(screen.getByRole('heading', { name: /pronto para revisar/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /aprovado/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /reprovado/i })).toBeInTheDocument();
+    expect(
+      await screen.findByRole('heading', { name: /pronto para revisar/i }),
+    ).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /aprovado/i })).toBeInTheDocument();
+    expect(await screen.findByRole('heading', { name: /reprovado/i })).toBeInTheDocument();
   });
 
   it('should render all names from Job Applications in the screen', () => {

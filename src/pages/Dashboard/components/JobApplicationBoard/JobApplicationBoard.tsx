@@ -1,9 +1,15 @@
 import { JOB_APPLICATION_STATUS } from '~/types/status';
 import { JobApplicationListByStatus } from '~/types/jobApplication';
 import * as S from './styles';
-import { JobApplicationColumn } from '../JobApplicationColumn/JobApplicationColumn';
-import { useMemo } from 'react';
+import { lazy, Suspense, useMemo } from 'react';
 import { JobApplicationListResponse } from '~/services/jobApplications';
+import { Loading } from '~/components/Loading';
+
+const JobApplicationColumn = lazy(() =>
+  import('../JobApplicationColumn').then(({ JobApplicationColumn }) => ({
+    default: JobApplicationColumn,
+  })),
+);
 
 const INITIAL_DATA: JobApplicationListByStatus = {
   [JOB_APPLICATION_STATUS.APPROVED]: [],
@@ -49,12 +55,13 @@ export const JobApplicationBoard = ({ jobApplicationList }: JobApplicationBoardP
   return (
     <S.Container>
       {allColumns.map(({ status, title }) => (
-        <JobApplicationColumn
-          status={status}
-          jobApplicationList={jobApplicationByStatus[status]}
-          title={title}
-          key={title}
-        />
+        <Suspense fallback={<Loading isCentered />} key={title}>
+          <JobApplicationColumn
+            status={status}
+            jobApplicationList={jobApplicationByStatus[status]}
+            title={title}
+          />
+        </Suspense>
       ))}
     </S.Container>
   );

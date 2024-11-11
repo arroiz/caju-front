@@ -25,6 +25,7 @@ dist-ssr
 *.sw?
 .last-run.json
 /playwright-report
+.eslintcache
 
 # Yarn
 .yarn/*

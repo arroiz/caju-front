@@ -1,4 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+export const LoadingContainer = styled.div<{ isCentered: boolean }>`
+  ${(props) =>
+    props.isCentered
+      ? css`
+          min-width: 200px;
+          min-height: 200px;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        `
+      : null}
+`;
 
 export const LoadingDots = styled.div`
   position: relative;
