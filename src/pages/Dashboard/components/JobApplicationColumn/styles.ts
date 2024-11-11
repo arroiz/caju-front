@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { REGISTRATION_STATUS } from '~/types/status';
+
 const registrationStatusStyles: {
   [key in REGISTRATION_STATUS]: { background: string; title: string };
 } = {
@@ -27,6 +28,10 @@ export const Container = styled.div`
 
 export const Column = styled.div<{ status: REGISTRATION_STATUS }>`
   height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
   background-color: ${({ status }) => registrationStatusStyles[status].background};
   border-radius: 32px;
   min-height: 80vh;
@@ -34,12 +39,16 @@ export const Column = styled.div<{ status: REGISTRATION_STATUS }>`
 `;
 
 export const TitleColumn = styled.h3<{ status: REGISTRATION_STATUS }>`
-  margin: 0px;
   color: ${({ status }) => registrationStatusStyles[status].title};
-  margin: 24px;
 `;
 
-export const CollumContent = styled.div`
-  overflow: auto;
+export const ColumnList = styled.ul`
   max-height: 85%;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 `;
+
+export const ColumnListItem = styled.li``;
