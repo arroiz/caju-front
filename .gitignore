@@ -23,6 +23,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.last-run.json
+/playwright-report
 
 # Yarn
 .yarn/*
