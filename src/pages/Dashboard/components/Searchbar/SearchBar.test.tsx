@@ -12,7 +12,7 @@ describe('SearchBar', () => {
       wrapper: ConfirmationDialogWrapper,
     });
     expect(screen.getByPlaceholderText(/digite um cpf válido/i)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /refetch/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /recarregar/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /nova admissão/i })).toBeInTheDocument();
   });
 
@@ -23,7 +23,7 @@ describe('SearchBar', () => {
     render(<SearchBar onSearch={onSearchMock} onRefetch={onRefetchMock} isLoading={false} />, {
       wrapper: ConfirmationDialogWrapper,
     });
-    await user.click(screen.getByRole('button', { name: /refetch/i }));
+    await user.click(screen.getByRole('button', { name: /recarregar/i }));
     expect(onRefetchMock).toHaveBeenCalledTimes(1);
   });
   it('should call onSearch when a valid CPF is entered', async () => {

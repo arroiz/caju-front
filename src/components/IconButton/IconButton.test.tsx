@@ -9,7 +9,7 @@ describe('IconButton', () => {
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
-    expect(screen.getByLabelText('back')).toBeInTheDocument();
+    expect(screen.getByLabelText('voltar')).toBeInTheDocument();
   });
 
   it('should call onClick when the IconButton is clicked', () => {
@@ -29,7 +29,7 @@ describe('IconButton', () => {
         <HiOutlineArrowLeft size={24} />
       </IconButton>,
     );
-    const button = screen.getByLabelText('back');
+    const button = screen.getByLabelText('voltar');
     button.focus();
     expect(button).toHaveFocus();
   });
