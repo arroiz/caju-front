@@ -1,10 +1,10 @@
 import { NewJobApplication } from '.';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { apiClient } from '~/config/apiClient';
 import { ReactQueryTestWrapper } from '~/helpers/testHelpers';
 import { routes } from '~/router/routes';
 import { JOB_APPLICATION_STATUS } from '~/types/status';
+import { apiClient } from '~/config/apiClient';
 
 const selectors = {
   inputs: {
@@ -30,9 +30,32 @@ describe('NewJobApplication', () => {
     expect(selectors.submitButton()).toBeInTheDocument();
   });
 
+  it('show error message when the submit fails', async () => {
+    const user = userEvent.setup();
+    jest.spyOn(apiClient, 'post').mockImplementation(() => Promise.reject());
+    render(<NewJobApplication />, {
+      wrapper: ReactQueryTestWrapper,
+    });
+    const nameInput = selectors.inputs.name();
+    await user.click(nameInput);
+    await user.keyboard('marcos taron');
+    const emailInput = selectors.inputs.email();
+    await user.click(emailInput);
+    await user.keyboard('marcosvtd@gmail.com');
+    const cpfInput = selectors.inputs.cpf();
+    await user.click(cpfInput);
+    await user.keyboard('23650697033');
+    const applicationDateInput = selectors.inputs.applicationDate();
+    await user.click(applicationDateInput);
+    await user.keyboard('2024-10-10');
+    const submitButton = selectors.submitButton();
+    await user.click(submitButton);
+    expect(await screen.findByText('Erro ao salvar candidatura')).toBeInTheDocument();
+  });
+
   it('should call create job application service when submit the form and navigate to home after creation', async () => {
     const user = userEvent.setup();
-    jest.spyOn(apiClient, 'post').mockReturnValue(
+    jest.spyOn(apiClient, 'post').mockResolvedValue(
       Promise.resolve({
         data: {
           id: '1',
@@ -62,5 +85,6 @@ describe('NewJobApplication', () => {
     const submitButton = selectors.submitButton();
     await user.click(submitButton);
     expect(window.location.pathname).toBe(routes.dashboard);
+    expect(await screen.findByText('Nova candidatura criada com sucesso')).toBeInTheDocument();
   });
 });

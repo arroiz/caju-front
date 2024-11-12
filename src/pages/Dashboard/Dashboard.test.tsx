@@ -1,5 +1,6 @@
 import { DashboardPage } from '.';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { apiClient } from '~/config/apiClient';
 import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
 
@@ -31,18 +32,6 @@ const defaultValue = [
 ];
 
 describe('DashboardPage', () => {
-  it('should render loading when page is loading', async () => {
-    jest.spyOn(apiClient, 'get').mockReturnValue(
-      Promise.resolve({
-        data: defaultValue,
-      }),
-    );
-    render(<DashboardPage />, {
-      wrapper: ConfirmationDialogWrapper,
-    });
-    expect(await screen.findByLabelText('carregando')).toBeInTheDocument();
-  });
-
   it('should render SearchBar with CPF input, refetch button and New Job Application link', async () => {
     jest.spyOn(apiClient, 'get').mockReturnValue(
       Promise.resolve({
@@ -58,7 +47,7 @@ describe('DashboardPage', () => {
   });
 
   it('should render Approve, Review and Reproved columns', async () => {
-    jest.spyOn(apiClient, 'get').mockReturnValue(
+    jest.spyOn(apiClient, 'get').mockResolvedValue(
       Promise.resolve({
         data: defaultValue,
       }),
@@ -92,6 +81,59 @@ describe('DashboardPage', () => {
     expect(await screen.findByText(person1.applicationDate)).toBeInTheDocument();
     expect(await screen.findByText(person2.applicationDate)).toBeInTheDocument();
     expect(await screen.findByText(person3.applicationDate)).toBeInTheDocument();
+  });
+
+  it('show confirmation modal and success message when trying to delete job application', async () => {
+    const user = userEvent.setup();
+    jest.spyOn(apiClient, 'get').mockReturnValue(
+      Promise.resolve({
+        data: defaultValue,
+      }),
+    );
+    jest.spyOn(apiClient, 'delete').mockImplementation(() => Promise.resolve());
+    render(<DashboardPage />, {
+      wrapper: ConfirmationDialogWrapper,
+    });
+    const [firstDeleteButton] = screen.getAllByRole('button', { name: /deletar/i });
+    await user.click(firstDeleteButton);
+    expect(
+      screen.getByRole('heading', {
+        name: /confirmação de exclusão de candidatura/i,
+      }),
+    ).toBeInTheDocument;
+    await user.click(
+      screen.getByRole('button', {
+        name: /confirmar/i,
+      }),
+    );
+    expect(await screen.findByText('Candidatura deletada com sucesso')).toBeInTheDocument();
+  });
+
+  it('show confirmation modal and error message when trying to delete job application and requests fail', async () => {
+    const user = userEvent.setup();
+    jest.spyOn(apiClient, 'delete').mockImplementation(() => Promise.reject());
+    jest.spyOn(apiClient, 'get').mockReturnValue(
+      Promise.resolve({
+        data: defaultValue,
+      }),
+    );
+    render(<DashboardPage />, {
+      wrapper: ConfirmationDialogWrapper,
+    });
+    await waitForElementToBeRemoved(() => screen.getByLabelText('carregando'));
+    const [firstDeleteButton] = screen.getAllByRole('button', { name: /deletar/i });
+    await user.click(firstDeleteButton);
+    expect(
+      screen.getByRole('heading', {
+        name: /confirmação de exclusão de candidatura/i,
+      }),
+    ).toBeInTheDocument;
+    await user.click(
+      screen.getByRole('button', {
+        name: /confirmar/i,
+      }),
+    );
+    expect(await screen.findByText('Erro ao deletar candidatura')).toBeInTheDocument();
   });
 
   it('should render empty message when there is no Job Applications available', async () => {

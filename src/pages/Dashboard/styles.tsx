@@ -10,10 +10,6 @@ export const LoadingContainer = styled.div`
   position: relative;
   min-height: 20vh;
 
-  &[aria-busy='true'] {
-    pointer-events: none;
-  }
-
   &[aria-busy='true'] > [aria-label='carregando'] {
     position: absolute;
     background: rgba(255, 255, 255, 0.7);
