@@ -8,6 +8,7 @@ import { IconButton } from '~/components/IconButton';
 import { useCallback } from 'react';
 import { useConfirmationDialog } from '~/contexts/ConfirmationDialogContext';
 import { useDeleteJobApplication } from '~/hooks/useDeleteJobApplication';
+import toast from 'react-hot-toast';
 
 type JobApplicationCardProps = {
   jobApplication: JobApplication;
@@ -22,10 +23,15 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
     (newStatus: JOB_APPLICATION_STATUS) => () =>
       dispatchConfirmation({
         onConfirm: async () => {
-          await updateJobApplication({
-            ...jobApplication,
-            status: newStatus,
-          });
+          try {
+            await updateJobApplication({
+              ...jobApplication,
+              status: newStatus,
+            });
+            toast.success('Candidatura alterada com sucesso');
+          } catch (e) {
+            toast.error('Erro ao alterar candidatura');
+          }
         },
         options: {
           title: 'Confirmar alteração de status',
@@ -39,9 +45,14 @@ export const JobApplicationCard = ({ jobApplication }: JobApplicationCardProps) 
     () =>
       dispatchConfirmation({
         onConfirm: async () => {
-          await deleteJobApplication({
-            id: jobApplication.id,
-          });
+          try {
+            await deleteJobApplication({
+              id: jobApplication.id,
+            });
+            toast.success('Candidatura deletada com sucesso');
+          } catch (e) {
+            toast.error('Erro ao deletar candidatura');
+          }
         },
         options: {
           title: 'Confirmação de Exclusão de Candidatura',

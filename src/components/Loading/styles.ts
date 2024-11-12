@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const LoadingContainer = styled.div<{ isCentered: boolean }>`
+export const LoadingContainer = styled.div<{ $isCentered: boolean }>`
   ${(props) =>
-    props.isCentered
+    props.$isCentered
       ? css`
           min-width: 200px;
           min-height: 200px;
