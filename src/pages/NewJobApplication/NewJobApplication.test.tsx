@@ -32,7 +32,12 @@ describe('NewJobApplication', () => {
 
   it('show error message when the submit fails', async () => {
     const user = userEvent.setup();
-    jest.spyOn(apiClient, 'post').mockImplementation(() => Promise.reject());
+    jest.spyOn(apiClient, 'post').mockImplementation((endpoint) => {
+      if (endpoint === '/job-applications') {
+        return Promise.reject();
+      }
+      return Promise.reject({});
+    });
     render(<NewJobApplication />, {
       wrapper: ReactQueryTestWrapper,
     });
@@ -55,18 +60,21 @@ describe('NewJobApplication', () => {
 
   it('should call create job application service when submit the form and navigate to home after creation', async () => {
     const user = userEvent.setup();
-    jest.spyOn(apiClient, 'post').mockResolvedValue(
-      Promise.resolve({
-        data: {
-          id: '1',
-          applicationDate: '2024-10-10',
-          email: 'marcosvtd@caju.com.br',
-          employeeName: 'marcos taron',
-          status: JOB_APPLICATION_STATUS.APPROVED,
-          cpf: '78502270001',
-        },
-      }),
-    );
+    jest.spyOn(apiClient, 'post').mockImplementation((endpoint) => {
+      if (endpoint === '/job-applications') {
+        return Promise.resolve({
+          data: {
+            id: '1',
+            applicationDate: '2024-10-10',
+            email: 'marcosvtd@caju.com.br',
+            employeeName: 'marcos taron',
+            status: JOB_APPLICATION_STATUS.APPROVED,
+            cpf: '78502270001',
+          },
+        });
+      }
+      return Promise.reject();
+    });
     render(<NewJobApplication />, {
       wrapper: ReactQueryTestWrapper,
     });

@@ -3,7 +3,7 @@ import { JobApplicationColumn } from '.';
 import { JOB_APPLICATION_STATUS } from '~/types/status';
 import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
 
-const defaultValue = {
+const jobApplicationList = {
   [JOB_APPLICATION_STATUS.REVIEW]: [
     {
       applicationDate: '22/10/2023',
@@ -66,7 +66,7 @@ describe('JobApplicationColumn', () => {
       <JobApplicationColumn
         title="Aprovado"
         status={JOB_APPLICATION_STATUS.APPROVED}
-        jobApplicationList={defaultValue[JOB_APPLICATION_STATUS.APPROVED]}
+        jobApplicationList={jobApplicationList[JOB_APPLICATION_STATUS.APPROVED]}
       />,
       {
         wrapper: ConfirmationDialogWrapper,
@@ -84,14 +84,14 @@ describe('JobApplicationColumn', () => {
       <JobApplicationColumn
         title="Aprovado"
         status={JOB_APPLICATION_STATUS.APPROVED}
-        jobApplicationList={defaultValue[JOB_APPLICATION_STATUS.APPROVED]}
+        jobApplicationList={jobApplicationList[JOB_APPLICATION_STATUS.APPROVED]}
       />,
       {
         wrapper: ConfirmationDialogWrapper,
       },
     );
     expect(screen.getAllByTestId('column-list-item')).toHaveLength(
-      defaultValue[JOB_APPLICATION_STATUS.APPROVED].length,
+      jobApplicationList[JOB_APPLICATION_STATUS.APPROVED].length,
     );
   });
 });

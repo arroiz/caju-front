@@ -15,7 +15,7 @@ type useListJobApplicationsParams = {
 export const useListJobApplications = (
   { params, ...options }: useListJobApplicationsParams = { params: {} },
 ) => {
-  const [searchFilters, setSearchFilters] = useState(params);
+  const [searchFilters, setSearchFilters] = useState<JobApplicationListParams>(params);
 
   const query = useQuery({
     ...options,

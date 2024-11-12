@@ -3,7 +3,7 @@ import { JobApplicationBoard } from '.';
 import { JOB_APPLICATION_STATUS } from '~/types/status';
 import { ConfirmationDialogWrapper } from '~/helpers/testHelpers';
 
-const defaultValue = [
+const jobApplicationList = [
   {
     applicationDate: '22/10/2023',
     email: 'luiz@caju.com.br',
@@ -39,7 +39,7 @@ describe('JobApplicationBoard', () => {
   });
 
   it('should show render three columns when there is Job Applications available', async () => {
-    render(<JobApplicationBoard jobApplicationList={defaultValue} />, {
+    render(<JobApplicationBoard jobApplicationList={jobApplicationList} />, {
       wrapper: ConfirmationDialogWrapper,
     });
     expect(
@@ -50,10 +50,10 @@ describe('JobApplicationBoard', () => {
   });
 
   it('should render all names from Job Applications in the screen', () => {
-    render(<JobApplicationBoard jobApplicationList={defaultValue} />, {
+    render(<JobApplicationBoard jobApplicationList={jobApplicationList} />, {
       wrapper: ConfirmationDialogWrapper,
     });
-    const [name1, name2, name3] = defaultValue;
+    const [name1, name2, name3] = jobApplicationList;
     expect(screen.getByRole('heading', { name: name1.employeeName })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: name2.employeeName })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: name3.employeeName })).toBeInTheDocument();
