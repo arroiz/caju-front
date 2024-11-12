@@ -31,7 +31,7 @@ export const NewJobApplicationForm = ({ onSubmit }: NewJobApplicationFormProps) 
     register,
     handleSubmit,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitted },
   } = useForm<NewApplicationFormData>({
     resolver: zodResolver(schema),
   });
@@ -40,10 +40,10 @@ export const NewJobApplicationForm = ({ onSubmit }: NewJobApplicationFormProps) 
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const cpfMasked = getMaskedCpf(event.target.value);
       setValue('cpf', cpfMasked, {
-        shouldValidate: true,
+        shouldValidate: isSubmitted,
       });
     },
-    [setValue],
+    [isSubmitted, setValue],
   );
 
   return (
